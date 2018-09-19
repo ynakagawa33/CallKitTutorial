@@ -12,7 +12,7 @@ import CallKit
 class ViewController: UIViewController, CXProviderDelegate {
     @IBOutlet weak var phoneNumber: UITextField!
 
-    let config = CXProviderConfiguration(localizedName: "My App")
+    let config = CXProviderConfiguration(localizedName: "Call Kit Tutorial")
     var provider: CXProvider?
 
     override func viewDidLoad() {
