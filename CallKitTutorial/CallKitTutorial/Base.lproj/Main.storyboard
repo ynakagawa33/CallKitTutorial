@@ -38,6 +38,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5L-AN-gDz">
                                 <rect key="frame" x="114" y="318.5" width="147" height="30"/>
                                 <state key="normal" title="Simulate Receive Call"/>
+                                <connections>
+                                    <action selector="SimulateReceiveCallButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bAv-8c-DcO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,6 +53,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="phoneNumber" destination="zvH-Qv-22a" id="Isj-zj-m51"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

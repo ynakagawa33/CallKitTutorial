@@ -10,14 +10,17 @@ import UIKit
 import CallKit
 
 class ViewController: UIViewController, CXProviderDelegate {
-    
+    @IBOutlet weak var phoneNumber: UITextField!
+
+    let config = CXProviderConfiguration(localizedName: "My App")
+    var provider: CXProvider?
+
     override func viewDidLoad() {
-        let config = CXProviderConfiguration(localizedName: "My App")
-        let provider = CXProvider(configuration: config)
-        provider.setDelegate(self, queue: nil)
-        let update = CXCallUpdate()
-        update.remoteHandle = CXHandle(type: .generic, value: "Pete Za")
-        provider.reportNewIncomingCall(with: UUID(), update: update, completion: { error in })
+        if self.provider == nil {
+            let provider = CXProvider.init(configuration: self.config)
+            provider.setDelegate(self, queue: nil)
+            self.provider = provider
+        }
     }
     
     func providerDidReset(_ provider: CXProvider) {
@@ -31,5 +34,13 @@ class ViewController: UIViewController, CXProviderDelegate {
         action.fulfill()
     }
     
+    @IBAction func SimulateReceiveCallButtonTapped(_ sender: UIButton) {
+        guard let provider = self.provider else { return }
+        guard let phoneNumberText = phoneNumber.text else { return }
+
+        let update = CXCallUpdate()
+        update.remoteHandle = CXHandle(type: .phoneNumber, value: phoneNumberText )
+        provider.reportNewIncomingCall(with: UUID(), update: update, completion: { error in })
+    }
 }
 
