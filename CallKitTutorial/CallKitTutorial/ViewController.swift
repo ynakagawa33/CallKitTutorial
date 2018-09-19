@@ -12,7 +12,8 @@ import CallKit
 class ViewController: UIViewController, CXProviderDelegate {
     
     override func viewDidLoad() {
-        let provider = CXProvider(configuration: CXProviderConfiguration(localizedName: "My App"))
+        let config = CXProviderConfiguration(localizedName: "My App")
+        let provider = CXProvider(configuration: config)
         provider.setDelegate(self, queue: nil)
         let update = CXCallUpdate()
         update.remoteHandle = CXHandle(type: .generic, value: "Pete Za")
